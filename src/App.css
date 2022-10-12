@@ -1,0 +1,102 @@
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@300;600;800&display=swap");
+:root {
+  --Dark-Blue-Element: hsl(209, 23%, 22%);
+  --Very-Dark-Blue-Background: hsl(207, 26%, 17%);
+  --Dark-Blue-Text: hsl(200, 15%, 8%);
+  --Dark-Gray-Input: hsl(0, 0%, 52%);
+  --Very-Light-Gray-Background: hsl(0, 0%, 98%);
+  --White-Text-Element: hsl(0, 0%, 100%);
+  --font-size-home: 14px;
+  --font-size-detail: 16px;
+}
+html {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 100%;
+  box-sizing: border-box;
+}
+
+*,
+*::before,
+*::after {
+  box-sizing: inherit;
+}
+
+h1,
+h2,
+h3 {
+  margin-top: 0;
+  line-height: 1.1;
+}
+
+a,
+a:visited,
+a:active {
+  text-decoration: none;
+}
+ul {
+  list-style: none;
+}
+
+#light {
+  background-color: var(--Very-Light-Gray-Background);
+}
+
+#dark {
+  background-color: var(--Very-Dark-Blue-Background);
+}
+
+#light .mode {
+  color: var(--Dark-Blue-Text);
+}
+
+#dark .mode {
+  color: var(--White-Text-Element);
+}
+
+nav {
+  display: flex;
+  align-items: baseline;
+  justify-content: space-between;
+  width: 100%;
+  padding: 2rem 5.1rem 1rem;
+  /* box-shadow: 0 2px 3px -2px rgba(0, 0, 0, 0.2); */
+  box-shadow: 0 7px 6px -4px rgba(9, 9, 9, 0.27);
+}
+#dark nav {
+  background-color: var(--Dark-Blue-Element);
+}
+#light nav {
+  background-color: var(--White-Text-Element);
+}
+.top--title {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 800;
+  font-size: 1.5rem;
+}
+.top--right {
+  font-family: "Nunito Sans", sans-serif;
+  font-weight: 600;
+}
+
+.toggle {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  cursor: pointer;
+  font-size: 1rem;
+}
+
+/* @media screen and (max-width: 373px) {
+  .top--title {
+    font-size: medium;
+  }
+  .toggle {
+    font-size: x-small;
+    gap: 0.1rem;
+  }
+} */
+@media screen and (max-width: 600px) {
+  nav {
+    padding: 2rem 0.5rem 1rem;
+  }
+}
