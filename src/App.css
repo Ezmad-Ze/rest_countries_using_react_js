@@ -10,11 +10,12 @@
   --font-size-detail: 16px;
 }
 html {
-  font-family: "Nunito Sans", sans-serif;
   font-size: 100%;
   box-sizing: border-box;
 }
-
+body {
+  font-family: "Nunito Sans", sans-serif;
+}
 *,
 *::before,
 *::after {
@@ -35,6 +36,9 @@ a:active {
 }
 ul {
   list-style: none;
+}
+.App {
+  max-height: 100vh;
 }
 
 #light {
@@ -59,7 +63,6 @@ nav {
   justify-content: space-between;
   width: 100%;
   padding: 2rem 5.1rem 1rem;
-  /* box-shadow: 0 2px 3px -2px rgba(0, 0, 0, 0.2); */
   box-shadow: 0 7px 6px -4px rgba(9, 9, 9, 0.27);
 }
 #dark nav {
@@ -85,7 +88,81 @@ nav {
   cursor: pointer;
   font-size: 1rem;
 }
+#light main {
+  background-color: var(--Very-Light-Gray-Background);
+}
+#dark main {
+  background-color: var(--Very-Dark-Blue-Background);
+}
+main {
+  height: 100%;
+  background-color: red;
+  padding: 100px 50px 10px 50px;
+}
+.main--style {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 30px;
+  justify-items: center;
+}
+@media screen and (max-width: 1121px) {
+  main {
+    margin: 0 auto;
+  }
+  .main--style {
+    grid-template-columns: repeat(3, 1fr);
+    column-gap: 3%;
+  }
+}
+@media screen and (max-width: 867px) {
+  .main--style {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+@media screen and (max-width: 593px) {
+  main {
+    margin: 0 auto;
+  }
+  .main--style {
+    grid-template-columns: 1fr;
+  }
+}
 
+.card {
+  border-radius: 10px;
+  width: 251px;
+  cursor: pointer;
+}
+#dark .card {
+  background-color: var(--Dark-Blue-Element);
+  box-shadow: 0 7px 6px -4px var(--Dark-Blue-Text);
+}
+#light .card {
+  background-color: var(--White-Text-Element);
+  box-shadow: 0 0 3px 3px rgb(0 0 0/3%);
+}
+.card:hover {
+  transform: translateX(1px) scale(1.1);
+  transition: 0.3s;
+}
+.card--image {
+  width: 250px;
+  border-radius: 10px 10px 0 0;
+  aspect-ratio: 3/2;
+}
+.card--title {
+  font-weight: 800;
+  font-size: 18px;
+  padding-left: 10px;
+}
+.card--info {
+  font-weight: 300;
+  font-size: 14px;
+  padding-left: 10px;
+}
+.card--info__subtitle {
+  font-weight: 600;
+}
 /* @media screen and (max-width: 373px) {
   .top--title {
     font-size: medium;
