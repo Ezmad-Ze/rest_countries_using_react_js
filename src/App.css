@@ -163,6 +163,12 @@ main {
 .card--info__subtitle {
   font-weight: 600;
 }
+.loading {
+  height: 100vh;
+  font-size: 36px;
+  display: flex;
+  justify-content: center;
+}
 /* @media screen and (max-width: 373px) {
   .top--title {
     font-size: medium;
