@@ -9,16 +9,16 @@ const Dropdown = () => {
 
   return (
     <div>
-      <label>
-        What do we eat?
-        <select value={value} onChange={handleChange}>
-          <option value="fruit">Fruit</option>
-          <option value="vegetable">Vegetable</option>
-          <option value="meat">Meat</option>
+        <select
+          name="list"
+          placeholder="search for region"
+          onChange={handleChange}
+        >
+          <option value="all">all</option>
+          <option value="africa">africa</option>
+          <option value="europe">europe</option>
         </select>
-      </label>
 
-      <p>We eat {value}!</p>
     </div>
   );
 };

@@ -1,9 +1,4 @@
-import React, { useContext } from "react";
-import { CountryContext } from "../Context/CountryContext";
-
-const Cards = ({ load }) => {
-  const { country } = useContext(CountryContext);
-
+const Cards = ({ load, country }) => {
   const CountryCard = () => {
     return (
       <div className="main--style">
