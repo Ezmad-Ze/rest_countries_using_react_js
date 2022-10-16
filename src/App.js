@@ -4,7 +4,6 @@ import axios from "axios";
 import Cards from "./Components/Cards";
 import NavBar from "./Components/NavBar";
 import { ThemeContext } from "./Context/ThemeContext";
-import { CountryContext } from "./Context/CountryContext";
 import { BASE_API } from "./Components/APIs";
 import Search from "./Components/Search";
 import Dropdown from "./Components/Dropdown";
@@ -13,6 +12,7 @@ function App() {
   const [theme, setTheme] = useState("dark");
   const [country, setCountry] = useState([]);
   const [query, setQuery] = useState("");
+  const [filterVal, setFilterVal] = useState("all");
   const [isLoading, setIsLoading] = useState(false);
 
   const toggleTheme = () => {
@@ -36,25 +36,51 @@ function App() {
     setQuery(queryValue);
   };
 
-  const searchCountry = country.filter(
-    (coun) =>
-      coun.name.common.toLowerCase().includes(query) ||
-      coun.name.official.toLowerCase().includes(query)
-  );
+  const regionFilter = (filterValue) => {
+    setFilterVal(filterValue);
+  };
+
+  const byName = (name) => (coun) => {
+    return (
+      coun.name.common.toLowerCase().includes(name.toLowerCase()) ||
+      coun.name.official.toLowerCase().includes(name.toLowerCase())
+    );
+  };
+
+  const byRegion = (region) => (coun) => {
+    if (region === "all") {
+      return country;
+    } else {
+      return coun.region.toLowerCase() === region.toLowerCase();
+    }
+  };
+
+  //TODO
+  const searchCountry = country
+    .filter(byName(query))
+    .filter(byRegion(filterVal));
 
   return (
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
-      <CountryContext.Provider value={{ country, setCountry }}>
-        <div className="App" id={theme}>
-          <NavBar />
-          <Search
-            getCountry={(arr) => setCountry(country)}
-            searchFilter={searchFilter}
-          />
-          <Dropdown />
-          <Cards load={isLoading} country={searchCountry} />
-        </div>
-      </CountryContext.Provider>
+      <div className="App" id={theme}>
+        <NavBar />
+        {isLoading ? (
+          <div className="loading">Loading 👇 👇 👇</div>
+        ) : (
+          <>
+            {" "}
+            <div className="filter">
+              <Search searchFilter={searchFilter} />
+              <Dropdown regionFilter={regionFilter} />
+            </div>
+            {!searchCountry.length ? (
+              <div className="empty">Not Found</div>
+            ) : (
+              <Cards country={searchCountry} />
+            )}
+          </>
+        )}
+      </div>
     </ThemeContext.Provider>
   );
 }

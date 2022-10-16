@@ -16,6 +16,7 @@ html {
 body {
   font-family: "Nunito Sans", sans-serif;
 }
+
 *,
 *::before,
 *::after {
@@ -163,11 +164,64 @@ main {
 .card--info__subtitle {
   font-weight: 600;
 }
-.loading {
+.loading,
+.empty {
   height: 100vh;
   font-size: 36px;
   display: flex;
   justify-content: center;
+  align-items: center;
+}
+#dark .loading,
+#dark .empty {
+  background-color: var(--Very-Dark-Blue-Background);
+  color: var(--White-Text-Element);
+}
+#light .loading,
+#light .empty {
+  background-color: var(--Very-Light-Gray-Background);
+  color: var(--Dark-Blue-Text);
+}
+.filter {
+  margin: 20px 100px -40px 100px;
+  display: flex;
+  justify-content: space-between;
+}
+.search--input {
+  font-family: "Nunito Sans", sans-serif;
+  font-size: 0.75rem;
+  font-weight: 600;
+  border: 1px var(--Dark-Blue-Element);
+  height: 44px;
+  max-width: 70px;
+  border-radius: 3px;
+  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.226);
+  outline: none;
+}
+#dark .search--input {
+  background-color: var(--Dark-Blue-Element);
+  color: var(--White-Text-Element);
+}
+#light .search--input {
+  background-color: var(--White-Text-Element);
+  color: var(--Dark-Blue-Text);
+}
+@media screen and (max-width: 620px) {
+  .filter {
+    flex-direction: column;
+  }
+}
+select {
+  width: 200px;
+  background-color: var(--Dark-Blue-Element);
+  outline: none;
+  border: none;
+  height: 30px;
+}
+option {
+  margin-top: 40px;
+  border: none;
+  outline: none;
 }
 /* @media screen and (max-width: 373px) {
   .top--title {

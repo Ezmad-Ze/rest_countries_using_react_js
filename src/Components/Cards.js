@@ -24,11 +24,7 @@ const Cards = ({ load, country }) => {
     );
   };
 
-  return (
-    <main>
-      {load ? <div className="loading">Loading 👇 👇 👇</div> : CountryCard()}
-    </main>
-  );
+  return <main>{CountryCard()}</main>;
 };
 
 export default Cards;
