@@ -9,7 +9,7 @@ const Dropdown = ({ regionFilter }) => {
     <div>
       <select
         name="list"
-        placeholder="search for region"
+        placeholder="Filter by Region"
         onChange={handleChange}
       >
         <option value="all">All</option>

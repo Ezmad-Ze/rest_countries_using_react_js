@@ -54,8 +54,24 @@ function App() {
       return coun.region.toLowerCase() === region.toLowerCase();
     }
   };
-
-  //TODO
+  const mainContent = () => {
+    return (isLoading ? (
+        <div className="loading">Loading 👇 👇 👇</div>
+      ) : (
+        <>
+          {" "}
+          <div className="filter">
+            <Search searchFilter={searchFilter} />
+            <Dropdown regionFilter={regionFilter} />
+          </div>
+          {!searchCountry.length ? (
+            <div className="empty">Not Found</div>
+          ) : (
+            <Cards country={searchCountry} />
+          )}
+        </>
+      ))
+  };
   const searchCountry = country
     .filter(byName(query))
     .filter(byRegion(filterVal));
@@ -64,22 +80,7 @@ function App() {
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div className="App" id={theme}>
         <NavBar />
-        {isLoading ? (
-          <div className="loading">Loading 👇 👇 👇</div>
-        ) : (
-          <>
-            {" "}
-            <div className="filter">
-              <Search searchFilter={searchFilter} />
-              <Dropdown regionFilter={regionFilter} />
-            </div>
-            {!searchCountry.length ? (
-              <div className="empty">Not Found</div>
-            ) : (
-              <Cards country={searchCountry} />
-            )}
-          </>
-        )}
+        {mainContent()}
       </div>
     </ThemeContext.Provider>
   );

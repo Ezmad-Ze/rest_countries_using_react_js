@@ -6,7 +6,7 @@ const Search = ({ searchFilter }) => {
   const inputSearch = () => {
     return (
       <div className="search">
-        <HiSearch />
+        <HiSearch size={20}/>
         <input
           type="search"
           className="search--input"

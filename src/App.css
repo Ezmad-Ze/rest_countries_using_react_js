@@ -72,6 +72,11 @@ nav {
 #light nav {
   background-color: var(--White-Text-Element);
 }
+@media screen and (max-width: 600px) {
+  nav {
+    padding: 2rem 0.5rem 1rem;
+  }
+}
 .top--title {
   font-family: "Nunito Sans", sans-serif;
   font-weight: 800;
@@ -143,8 +148,8 @@ main {
   box-shadow: 0 0 3px 3px rgb(0 0 0/3%);
 }
 .card:hover {
-  transform: translateX(1px) scale(1.1);
-  transition: 0.3s;
+  transform: scale(1.05);
+  transition: all 0.3s;
 }
 .card--image {
   width: 250px;
@@ -183,57 +188,59 @@ main {
   color: var(--Dark-Blue-Text);
 }
 .filter {
-  margin: 20px 100px -40px 100px;
+  margin: 40px 100px -40px 100px;
   display: flex;
   justify-content: space-between;
+}
+.search {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  width: 350px;
+  height: 50px;
+  min-width: 250px;
+  padding-left: 20px;
 }
 .search--input {
   font-family: "Nunito Sans", sans-serif;
   font-size: 0.75rem;
   font-weight: 600;
-  border: 1px var(--Dark-Blue-Element);
-  height: 44px;
-  max-width: 70px;
-  border-radius: 3px;
-  box-shadow: 0 0 3px 3px rgba(0, 0, 0, 0.226);
+  margin-left: 15px;
+  border: none;
   outline: none;
 }
-#dark .search--input {
+select {
+  width: 150px;
+  outline: none;
+  border: none;
+  height: 45px;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: -5px;
+}
+#dark .search,
+#dark .search--input,
+#dark select {
   background-color: var(--Dark-Blue-Element);
   color: var(--White-Text-Element);
 }
-#light .search--input {
+#light .search,
+#light .search--input,
+#light select {
   background-color: var(--White-Text-Element);
   color: var(--Dark-Blue-Text);
 }
-@media screen and (max-width: 620px) {
+
+@media screen and (max-width: 790px) {
   .filter {
     flex-direction: column;
   }
-}
-select {
-  width: 200px;
-  background-color: var(--Dark-Blue-Element);
-  outline: none;
-  border: none;
-  height: 30px;
-}
-option {
-  margin-top: 40px;
-  border: none;
-  outline: none;
-}
-/* @media screen and (max-width: 373px) {
-  .top--title {
-    font-size: medium;
+  select {
+    margin-top: 20px;
   }
-  .toggle {
-    font-size: x-small;
-    gap: 0.1rem;
-  }
-} */
-@media screen and (max-width: 600px) {
-  nav {
-    padding: 2rem 0.5rem 1rem;
+}
+@media screen and (max-width: 468px) {
+  .filter {
+    margin: 20px 0 -20px 20px;
   }
 }
