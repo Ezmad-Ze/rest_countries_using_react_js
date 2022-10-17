@@ -6,8 +6,9 @@ import NavBar from "./Components/NavBar";
 import { ThemeContext } from "./Context/ThemeContext";
 import { BASE_API } from "./Components/APIs";
 import Search from "./Components/Search";
+import Details from "./Components/Details";
 import Dropdown from "./Components/Dropdown";
-
+import { Routes, Route } from "react-router-dom";
 function App() {
   const [theme, setTheme] = useState("dark");
   const [country, setCountry] = useState([]);
@@ -55,22 +56,22 @@ function App() {
     }
   };
   const mainContent = () => {
-    return (isLoading ? (
-        <div className="loading">Loading 👇 👇 👇</div>
-      ) : (
-        <>
-          {" "}
-          <div className="filter">
-            <Search searchFilter={searchFilter} />
-            <Dropdown regionFilter={regionFilter} />
-          </div>
-          {!searchCountry.length ? (
-            <div className="empty">Not Found</div>
-          ) : (
-            <Cards country={searchCountry} />
-          )}
-        </>
-      ))
+    return isLoading ? (
+      <div className="loading">Loading 👇 👇 👇</div>
+    ) : (
+      <>
+        {" "}
+        <div className="filter">
+          <Search searchFilter={searchFilter} />
+          <Dropdown regionFilter={regionFilter} />
+        </div>
+        {!searchCountry.length ? (
+          <div className="empty">Not Found</div>
+        ) : (
+          <Cards country={searchCountry} />
+        )}
+      </>
+    );
   };
   const searchCountry = country
     .filter(byName(query))
@@ -80,7 +81,10 @@ function App() {
     <ThemeContext.Provider value={{ theme, toggleTheme }}>
       <div className="App" id={theme}>
         <NavBar />
-        {mainContent()}
+        <Routes>
+          <Route path="/" element={mainContent()} />
+          <Route path="/details/:id" element={<Details />} />
+        </Routes>
       </div>
     </ThemeContext.Provider>
   );
