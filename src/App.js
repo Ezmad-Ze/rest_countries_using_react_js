@@ -10,11 +10,11 @@ import Details from "./Components/Details";
 import Dropdown from "./Components/Dropdown";
 import { Routes, Route } from "react-router-dom";
 function App() {
-  const [theme, setTheme] = useState("dark");
+  const [theme, setTheme] = useState("light");
   const [country, setCountry] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
   const [query, setQuery] = useState("");
   const [filterVal, setFilterVal] = useState("all");
-  const [isLoading, setIsLoading] = useState(false);
 
   const toggleTheme = () => {
     setTheme((curr) => (curr === "light" ? "dark" : "light"));

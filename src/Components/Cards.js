@@ -1,6 +1,6 @@
 import { Link } from "react-router-dom";
 
-const Cards = ({ load, country }) => {
+const Cards = ({ country }) => {
   const CountryCard = () => {
     return (
       <div className="main--style">
