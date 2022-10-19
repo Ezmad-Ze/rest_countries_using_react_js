@@ -2,21 +2,40 @@ import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Link, useParams } from "react-router-dom";
 import { NAME_API } from "./APIs";
-const Details = () => {
+
+const Details = ({ allCountries }) => {
   const { id } = useParams();
   const [country, setCountry] = useState(null);
-  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
-    setIsLoading(true);
     axios
       .get(`${NAME_API}/${id}`)
       .then((res) => {
         setCountry(res.data[0]);
-        setIsLoading(false);
       })
       .catch((err) => console.log(err));
   }, [id]);
+
+  //To Find the bordered countries
+  const border = country?.borders !== undefined ? country?.borders : null;
+
+  //To filter the bordered countries
+  const bord = allCountries.filter((all) => border?.includes(all.cca3));
+
+  const borders = () => {
+    return (
+      <>
+        {country?.borders !== undefined &&
+          bord.map((border) => (
+            <div key={border?.name?.official}>
+              <Link to={`/details/${border.name.common}`}>
+                <div>{border?.name?.common}</div>
+              </Link>
+            </div>
+          ))}
+      </>
+    );
+  };
 
   const details = () => {
     return (
@@ -60,6 +79,7 @@ const Details = () => {
                 )}
               </p>
             </div>
+            {bord.length !== 0 ? borders() : <div>No border</div>}
           </>
         ) : (
           <div className="loading">Searching 👇 👇 👇</div>

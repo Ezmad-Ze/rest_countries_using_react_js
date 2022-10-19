@@ -83,7 +83,10 @@ function App() {
         <NavBar />
         <Routes>
           <Route path="/" element={mainContent()} />
-          <Route path="/details/:id" element={<Details />} />
+          <Route
+            path="/details/:id"
+            element={<Details allCountries={country} />}
+          />
         </Routes>
       </div>
     </ThemeContext.Provider>
