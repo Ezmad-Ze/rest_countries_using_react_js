@@ -53,7 +53,7 @@ const Details = ({ allCountries }) => {
             <div className="details--container">
               <img
                 src={country?.flags?.svg}
-                alt=""
+                alt= {country?.name?.common}
                 className="details--image"
               />
               <div className="details--container__top">

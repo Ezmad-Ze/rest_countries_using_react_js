@@ -13,7 +13,7 @@ import { Routes, Route } from "react-router-dom";
 
 function App() {
   
-  const [theme, setTheme] = useState("light");
+  const [theme, setTheme] = useState("dark");
   const [country, setCountry] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
   const [query, setQuery] = useState("");

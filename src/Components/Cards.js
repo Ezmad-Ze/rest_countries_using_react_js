@@ -7,7 +7,7 @@ const Cards = ({ country }) => {
         {country.map((coun) => (
           <div key={coun.name.official} className="card">
             <Link to={`/details/${coun.name.common}`}>
-              <img src={coun.flags.png} alt="" className="card--image" />
+              <img src={coun.flags.png} alt={coun?.name?.common} className="card--image" />
               <h3 className="card--title mode">{coun.name.common}</h3>
               <p className="card--info mode">
                 <span className="card--info__subtitle">Population:</span>{" "}
