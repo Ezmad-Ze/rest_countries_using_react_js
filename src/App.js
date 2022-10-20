@@ -9,7 +9,10 @@ import Search from "./Components/Search";
 import Details from "./Components/Details";
 import Dropdown from "./Components/Dropdown";
 import { Routes, Route } from "react-router-dom";
+
+
 function App() {
+  
   const [theme, setTheme] = useState("light");
   const [country, setCountry] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
